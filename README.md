@@ -9,3 +9,20 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 - Skill choices based on class
 - Save/Load for later
 
+## How To Build
+
+mkdir build
+cd build
+cmake ..
+cmake --build .
+
+## Usage
+
+./Dev-s-ConsoleRPG
+
+### Initialize Git Repository
+
+cd Dev-s-ConsoleRPG
+git init
+git add .
+git commit -m "Initial project structure"
