@@ -23,6 +23,13 @@ class Mage : public Player {
         std::cout << playerName << " cannot use a spell right now (out of mana)..." << std::endl;
       }
     }
+
+    void displayStatus() const override {
+      Player::displayStatus();
+      std::cout << "*** Class: Mage ***" << std::endl;
+      std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
+      std::cout << "Spell Power: " << spellPower << std::endl;
+    }
 };
 
 #endif // !MAGE_H

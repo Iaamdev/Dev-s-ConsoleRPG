@@ -1,11 +1,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "Character.h"
 #include "Inventory.h"
 
-class Player {
+class Player : public Character {
   private:
-    // Inventory inventory;
+    Inventory inventory;
     int level;
     int experience;
     int expToNextLevel;
@@ -17,13 +18,11 @@ class Player {
 
   public:
 
-    virtual ~Player();
+    ~Player();
     // Constructor
-    Player(std::string name, int health, int attackPower) : playerName(name),
-      currentHealth(health), maxHealth(health), level(1), experience(0),
-      expToNextLevel(100) {};
+    Player(std::string name, int health, int attackPower);
 
-    virtual void specialAbilityAttack();  // Will use this for speical attacks for each Class  
+    virtual int specialAbilityAttack();  // Will use this for speical attacks for each Class  
 
     virtual int getAttackPower() const;
 

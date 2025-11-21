@@ -25,6 +25,12 @@ class Thief : public Player {
         Player::takeDamage(damage);
       }
     }
+    void displayStatus() const override {
+      Player::displayStatus();
+      std::cout << "*** Class ***" << std::endl;
+      std::cout << "--- Thief ---" << std::endl;
+      std::cout << "Evasion Chance: " << (evasionChance * 100) << "%" << std::endl;
+    }
 };
 
 #endif // !THIEF_H
