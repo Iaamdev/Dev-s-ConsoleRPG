@@ -13,7 +13,7 @@ class Character {
     
     virtual int getAttackPower() const = 0;
     virtual void takeDamage(int damage) = 0;
-    virtual void displayerStatus() const = 0;
+    virtual void displayStatus() const = 0;
 };
 
 #endif // !CHARACTER_H

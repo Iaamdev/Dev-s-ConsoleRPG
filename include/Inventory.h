@@ -4,11 +4,9 @@
 #include "Item.h"
 #include <iostream>
 
-
 class Inventory {
   private:
     std::vector <Item> items;
-    int capacity;
 
   public:
     void addItem(const Item& item) { items.push_back(item); }
