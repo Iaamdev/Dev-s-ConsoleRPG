@@ -24,12 +24,13 @@ std::unique_ptr<Player> createPlayer(const string& name) {
   cout << "------------------------------------" << endl;
 
   int choice = 0;
-  cout << "Choice (Input 1, 2, or 3): " << endl;
+  cout << "Choice (Input 1, 2, or 3): ";
 
   // Input validation
-  while (choice < 1 || choice > 3) {
+  while (!(cin >> choice) || choice < 1 || choice > 3) {
     cin.clear();
     cout << "Invalid input (Input 1, 2, 3): " << endl; 
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
   // Base stats
@@ -52,13 +53,13 @@ int main() {
   
   string playerName;
   cout << "\nWelcome to Dev's Console RPG!" << endl;
-  cout << "Name: " << endl;
+  cout << "Name: ";
   cin >> playerName;
 
   unique_ptr<Player> hero = createPlayer(playerName);
   
   if (hero) {
-    cout << "Your character has been created successfully!" << endl;
+    cout << "\nYour character has been created successfully!\n" << endl;
     hero->displayStatus();
   } else {
     cout << "Error: Failed to create character...";
