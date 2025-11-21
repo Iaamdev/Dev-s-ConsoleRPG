@@ -25,8 +25,6 @@ class Thief : public Player {
         Player::takeDamage(damage);
       }
     }
-
 };
-
 
 #endif // !THIEF_H

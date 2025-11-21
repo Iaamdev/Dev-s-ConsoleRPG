@@ -3,7 +3,6 @@
 
 #include "Player.h"
 #include <iostream>
-#include <string>
 
 class Fighter : public Player {
   private:
@@ -18,5 +17,6 @@ class Fighter : public Player {
     std::cout << "Defensive stance activated!" << std::endl;
   }
 
-}
+};
+
 #endif // !FIGHTER_H

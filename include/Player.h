@@ -23,7 +23,7 @@ class Player {
       currentHealth(health), maxHealth(health), level(1), experience(0),
       expToNextLevel(100) {};
 
-    virtual void specialAbilityAttack() = 0;  // Will use this for speical attacks for each Class  
+    virtual void specialAbilityAttack();  // Will use this for speical attacks for each Class  
 
     virtual int getAttackPower() const;
 

@@ -38,4 +38,5 @@ public:
   friend std::ostream& operator<<(std::ostream& out, const Item& item);
 
 };
+
 #endif

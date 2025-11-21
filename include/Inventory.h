@@ -7,21 +7,18 @@
 
 class Inventory {
   private:
-    Item* items;
+    std::vector <Item> items;
     int capacity;
-    int ItemCount;
 
   public:
-    Inventory(int capacity);
-    ~Inventory();
-
-    Inventory(const Inventory& other);
+    void addItem(const Item& item) { items.push_back(item); }
     
-    bool addItem(const Item& item);
-    
-    void display() const;
-
-    int getTotalAttackBonus() const;
+    void display() const {
+      std::cout << "--- Inventory ---" << std::endl;
+      for (const auto& item : items) {
+        std::cout << "- " << item.getName() << std::endl;
+      }
+    }
 };
 
 
