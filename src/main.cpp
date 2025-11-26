@@ -29,7 +29,7 @@ std::unique_ptr<Player> createPlayer(const string& name) {
   // Input validation
   while (!(cin >> choice) || choice < 1 || choice > 3) {
     cin.clear();
-    cout << "Invalid input (Input 1, 2, 3): " << endl; 
+    cout << "Invalid input (Input 1, 2, 3): "; 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
   }
 
