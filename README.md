@@ -11,14 +11,14 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 
 ## Updates
 
-### 1.0
+### 0.1
 
 - Created Class structures and displays for starting classes
 - Greet the player along with giving the player choice on classes
 
 ## How To Build
 
-- cd Dev-s-ConsoleRPG
+- cd Dev-s-ConsoleRPG/src
 - g++ Player.cpp main.cpp -o Devs_Console_RPG
 
 ## Usage
