@@ -13,7 +13,7 @@ class Enemy : public Character {
 
     // MUST override pure virtual function from Character
     virtual int getAttackPower() const override;
-    void takeDamage(int damage);
+    void takeDamage(int damage) override;
     virtual void displayStatus() const override;
 
     // Getters
