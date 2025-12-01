@@ -1,24 +1,28 @@
 #ifndef ENEMY_H
 #define ENEMY_H
+
 #include "../include/Character.h"
+#include <string>
 
 class Enemy : public Character {
   protected:
     int expReward;
-    char symbol;  // How enemy appears on map
-
+    int currentHealth;
+    int maxHealth; 
+    
   public:
     // Constructor
-    Enemy(std::string name, int health, int attackPower, int expReward, char symbol);
+    Enemy(std::string name, int health, int attackPower, int expReward);
 
-    // MUST override pure virtual function from Character
-    virtual int getAttackPower() const override;
+    // Override functions
+    int getAttackPower() const override;
     void takeDamage(int damage) override;
-    virtual void displayStatus() const override;
+    void displayStatus() const override;
 
-    // Getters
+    // Getters/Helpers
+    bool isAlive() const;
     int getExpReward() const { return expReward; }
-    char getSymbol() const { return symbol; }
+    std::string getName() const { return name; }
 
 };
 
