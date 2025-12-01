@@ -16,6 +16,13 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 - Created Class structures and displays for starting classes
 - Greet the player along with giving the player choice on classes
 
+### 0.2
+
+- Created Enemies
+- Created unique attacks per class
+- Created functional HP, Mana, leveling systems
+- Started Scenario Building
+
 ## How To Build
 
 - cd Dev-s-ConsoleRPG/src
