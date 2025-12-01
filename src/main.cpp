@@ -2,13 +2,27 @@
 #include "../include/Mage.h"
 #include "../include/Thief.h"
 #include "../include/ascii.h" // ASCII Art
+#include "../include/Enemy.h"
+#include "../include/Battle.h"
+
 #include <iostream>
 #include <memory>
 #include <cstdlib>
+#include <limits>
 
 using namespace std;
 
+// Battale Function & Combat Logic
+void Battle(Player& player, Enemy& enemy) {
+  cout << "\nA " << enemy.getName() << " has shown up!" << endl;
+  cout << "--- Battle Start! ---" << endl;
 
+  while (enemy.isAlive()) {
+    cout << player.displayStatus() << endl;
+    cout << "--------------------------" << endl;
+    cout << enemy.displayStatus() << endl;
+  }
+}
 
 std::unique_ptr<Player> createPlayer(const string& name) {
 
