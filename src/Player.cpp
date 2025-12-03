@@ -38,7 +38,6 @@ void Player::displayStatus() const {
   cout << "Level: " << level << " | Exp to next: " << experience << " / " << expToNextLevel << endl;
   cout << "HP: " << currentHealth << " / " << maxHealth << endl;
   cout << "Attack Power: " << getAttackPower() << endl;
-  if ()
 }
 
 void Player::gainExp(int exp) {
@@ -56,7 +55,7 @@ void Player::levelUp() {
   maxHealth += 10;
   currentHealth = maxHealth;
   attackPower += 2;
-  cout << "Level Up!! You are now level " << level << "!" << endl;
+  cout << "***Level Up!!***"<< endl;
 }
 
 void Player::showInventory() const {

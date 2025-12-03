@@ -10,6 +10,7 @@ Enemy::Enemy(string name, int health, int attackPower, int expReward) :
   currentHealth(health), maxHealth(health), expReward(expReward) {
   this->name = name;
   this->attackPower = attackPower;
+  cout << endl;
   cout << "Enemy " << name << " has appeared!" << endl;
 }
 
@@ -18,15 +19,19 @@ int Enemy::getAttackPower() const {
 }
 
 void Enemy::takeDamage(int damage) {
-  currentHealth -= damage;
   if (rand() % 100 < 10) {
     damage = damage / 2;
     cout << name << " blocks some of the damage!\n";
-  } else if (currentHealth < 0) {
-    cout << " > " << name << " took " << damage << " damage! HP: " << currentHealth << "/"
-      << maxHealth << endl;
+  } 
+
+  currentHealth -= damage;
+
+  if (currentHealth < 0) {
+    currentHealth = 0;
   }
-  Character::takeDamage(damage);
+  cout << " > " << name << " took " << damage << " damage! HP: " << currentHealth << "/"
+      << maxHealth << endl;
+
 }
 
 void Enemy::displayStatus() const {
