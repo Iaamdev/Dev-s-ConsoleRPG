@@ -10,41 +10,40 @@
 #include <cstdlib>
 #include <limits>
 
-using namespace std;
 
 // Battale Function & Combat Logic
-void Battle(Player& player, Enemy& enemy) {
-  cout << "\nA " << enemy.getName() << " has shown up!" << endl;
-  cout << "--- Battle Start! ---" << endl;
+// void Battle(Player& player, Enemy& enemy) {
+//   cout << "\nA " << enemy.getName() << " has shown up!" << endl;
+//   cout << "--- Battle Start! ---" << endl;
+//
+//   while (enemy.isAlive()) {
+//     cout << player.displayStatus() << endl;
+//     cout << "--------------------------" << endl;
+//     cout << enemy.displayStatus() << endl;
+//   }
+// }
 
-  while (enemy.isAlive()) {
-    cout << player.displayStatus() << endl;
-    cout << "--------------------------" << endl;
-    cout << enemy.displayStatus() << endl;
-  }
-}
-
-std::unique_ptr<Player> createPlayer(const string& name) {
+std::unique_ptr<Player> createPlayer(const std::string& name) {
 
   // Choosing player class
-  cout << "\nChoose your Class:\n";
-  cout << "------------------------------------" << endl;
+  std::cout << "\nChoose your Class:\n";
+  std::cout << "------------------------------------" << std::endl;
   knghtAscii();
-  cout << "1. Fighter -> High Defense + High Strength" << endl;
+  std::cout << "1. Fighter -> High Defense + High Strength" << std::endl;
   mageAscii();
-  cout << "2. Mage -> Spell Damage + Magic" << endl;
+  std::cout << "2. Mage -> Spell Damage + Magic" << std::endl;
   thiefAscii();
-  cout << "3. Thief -> Evasion + Criticals" << endl;
-  cout << "------------------------------------" << endl;
+  std::cout << "3. Thief -> Evasion + Criticals" << std::endl;
+  std::cout << "------------------------------------" << std::endl;
 
   int choice = 0;
-  cout << "Choice (Input 1, 2, or 3): ";
+  std::cout << "Choice (Input 1, 2, or 3): ";
 
   // Input validation
-  while (!(cin >> choice) || choice < 1 || choice > 3) {
-    cin.clear();
-    cout << "Invalid input (Input 1, 2, 3): "; 
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  while (!(std::cin >> choice) || choice < 1 || choice > 3) {
+    std::cin.clear();
+    std::cout << "Invalid input (Input 1, 2, 3): "; 
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   }
 
   // Base stats
@@ -65,18 +64,27 @@ std::unique_ptr<Player> createPlayer(const string& name) {
 
 int main() {
   
-  string playerName;
-  cout << "\nWelcome to Dev's Console RPG!" << endl;
-  cout << "Name: ";
-  cin >> playerName;
+  std::string playerName;
+  std::cout << "\nWelcome to Dev's Console RPG!" << std::endl;
+  std::cout << "Name: ";
+  std::cin >> playerName;
 
-  unique_ptr<Player> hero = createPlayer(playerName);
+  std::unique_ptr<Player> hero = createPlayer(playerName);
   
   if (hero) {
-    cout << "\nYour character has been created successfully!\n" << endl;
+    std::cout << "\nYour character has been created successfully!\n" << std::endl;
     hero->displayStatus();
+    
+    // Scenario Test
+    Enemy goblin("Goblin", 50, 10, 50);
+    Battle(*hero, goblin);
+
+    // Level up Test
+    hero->gainExp(300);
+    std::cout << std::endl;
+    std::cout << playerName << " has reached level " << hero->getLevel() << "!" << std::endl; 
   } else {
-    cout << "Error: Failed to create character...";
+    std::cout << "Error: Failed to create character...";
   }
 
   return 0;
