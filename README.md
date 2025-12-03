@@ -21,12 +21,16 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 - Created Enemies
 - Created unique attacks per class
 - Created functional HP, Mana, leveling systems
+
+### 0.3 (Next)
+
 - Started Scenario Building
+- Item finds
 
 ## How To Build
 
 - cd Dev-s-ConsoleRPG/src
-- g++ Player.cpp main.cpp -o Devs_Console_RPG
+- g++ -std=c++20 main.cpp Player.cpp Enemy.cpp Battle.cpp -o consoleRPG
 
 ## Usage
 
