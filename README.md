@@ -34,7 +34,7 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 
 ## Usage
 
-- ./Dev-s-ConsoleRPG
+- ./consoleRPG
 
 ## Initialize Git Repository
 
