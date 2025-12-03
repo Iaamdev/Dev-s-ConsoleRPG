@@ -15,14 +15,61 @@ class Mage : public Player {
     Mage(std::string name, int health, int attackPower, int baseMana = 10, int baseSpellPower = 10) :
       Player(name, health, attackPower), mana(baseMana), maxMana(baseMana), spellPower(baseSpellPower) {}
 
-    virtual void mageAbility() {
+    void specialUtility() override {
       if (mana >= 10) {
         mana -= 10;
-        std::cout << playerName << " used a spell!" << std::endl;
+        std::cout << playerName << " used MANA SPARK!" << std::endl;
       } else {
-        std::cout << playerName << " cannot use a spell right now (out of mana)..." << std::endl;
+        std::cout << "You don't have enough mana!" << std::endl;
       }
     }
+
+    void specialAttack(Enemy& target) override {
+      if (mana >= 5) {
+        mana -= 5;
+        std::cout << playerName << " casts VORTEX BLAST!" << std::endl;
+        int damage = getAttackPower() + spellPower;
+        target.takeDamage(damage);
+        // std::cout << playerName << " hit " << target << " for " << damage << " damage!"
+      } else {
+        std::cout << "You don't have enough mana for VORTEX BLAST!" << std::endl;
+        // May add the below code if I have issues with the loop
+        // std::cout << "You don't have enough mana! You used a regular attack!" << std::endl;
+        // target.takeDamage(getAttackPower())
+      }
+    }
+
+    void ultimateAbility(Enemy& target) override {
+      if (mana >= 20) {
+        mana -= 20;
+        std::cout << playerName << " casts METEORA!" << std::endl;
+        int damage = (getAttackPower() + spellPower) * 2;
+        target.takeDamage(damage);
+      } else {
+        std::cout << "You don't have enough mana for METEORA!" << std::endl;
+      }
+    }
+    
+    void performHeal() override {
+      if (mana >= 15) {
+        mana -= 15;
+        int healAmount = 50;
+        currentHealth += healAmount;
+        if (currentHealth > maxHealth) {
+          currentHealth = maxHealth;
+          std::cout << playerName << " casts CURAGA!" << std::endl;
+          std::cout << playerName << " healed for " << healAmount << " HP!";
+        } else {
+          std::cout << "You don't have enough mana for CURAGA!" << std::endl;
+        }
+      } 
+    }
+
+    std::string getSpecialUtilityName() const override { return "FIREBALL"; }
+    std::string getSpecialAttackName() const override { return "VORTEX BLAST"; }
+    std::string getUltimateName() const override { return "METEORA"; }
+    std::string getHealName() const override { return "CURAGA"; }
+    
 
     void displayStatus() const override {
       Player::displayStatus();

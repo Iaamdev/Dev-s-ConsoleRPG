@@ -14,48 +14,43 @@ class Fighter : public Player {
       int startingStrengthBonus = 10) : 
       Player(name, health, attackPower), defenseBonus(startingDefenseBonus), strengthBonus(startingStrengthBonus) {}
     
-  // Virtual Function from Player
-  virtual void fighterAbility() {
-    std::cout << "Defensive stance activated!" << std::endl;
-  }
-
-  int getAttackPower() const override {
+  int getFighterAttackPower() const {
     return Player::getAttackPower() + strengthBonus;
   }
 
   // Ability attacks
-  void performSpecialUtility() const {
-    std::cout << playerName << " activates Defensive Stance!" << std::endl;
+  void specialUtility() override {
+    std::cout << playerName << " activates DEFENSE STANCE!" << std::endl;
   }
 
-  void performSpecialAttack() const {
+  void specialAttack(Enemy& target) override {
     std::cout << playerName << " charges with a SHIELD BASH!" << std::endl;
     // Uses the strength bonus included in getAttackPower() * 1.5
     int damage = getAttackPower() * 1.5; 
     target.takeDamage(damage);
   }
 
-  void performUltimateAbility() const {
+  void ultimateAbility(Enemy& target) override {
     std::cout << playerName << " SMITE's their enemy!" << std::endl;
     int damage = getAttackPower() * 3; 
     std::cout << "SMITE deals " << damage << " damage!" << std::endl;
     target.takeDamage(damage);
   }
 
-  void performHealAbility() const {
+  void performHeal() override {
     int healAmount = maxHealth * 0.4; // Recover 40% HP
     currentHealth += healAmount;
     if (currentHealth > maxHealth) {
       currentHealth = maxHealth; 
     }
-    std::cout << playerName << " uses Second Wind and recovers " << healAmount << " HP!" << std::endl;
+    std::cout << playerName << " uses SECOND WIND and recovers " << healAmount << " HP!" << std::endl;
   }
 
   // Getters for class
-  std::string getSpecialName() const override { return "Defensive Stance"; }
-  std::string getSpeicalAttackName() const override { return "Shield Bash"; }
-  std::string getUltimateName() const override { return "Smite"; }
-  std::string getHealName() const override { return "Second Wind"; }
+  std::string getSpecialUtilityName() const override { return "DEFENSIVE STANCE"; }
+  std::string getSpecialAttackName() const override { return "SHIELD BASH"; }
+  std::string getUltimateName() const override { return "SMITE"; }
+  std::string getHealName() const override { return "SECOND WIND"; }
 
   // Unique display status for fighter class
   void displayStatus() const override {

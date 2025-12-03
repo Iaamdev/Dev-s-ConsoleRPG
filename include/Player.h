@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "Character.h"
+#include "Enemy.h"
 #include "Inventory.h"
 #include "Item.h"
 
@@ -46,6 +47,7 @@ class Player : public Character {
     // Player-specific methods
     void gainExp(int exp);
     void levelUp();
+    bool isDead() const { return currentHealth <= 0; }
 
     // Inventory access
     void showInventory() const;
