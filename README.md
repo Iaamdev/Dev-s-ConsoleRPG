@@ -22,7 +22,7 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 - Created unique attacks per class
 - Created functional HP, Mana, leveling systems
 
-### 0.3 (Next)
+### 0.3 (Next Update)
 
 - Started Scenario Building
 - Item finds
