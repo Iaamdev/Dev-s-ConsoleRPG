@@ -2,17 +2,30 @@
 #include <ios>
 #include <iostream>
 #include <limits>
+#include <cstdlib>
 
 using namespace std;
 
+void checkGameOver(const Player& hero) {
+  if (hero.isDead()) {
+    std::cout << "\n========================================" << std::endl;
+    std::cout << "           Y O U   D I E D              " << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "Your journey ends here, adventurer..." << std::endl;
+    // Stops the entire program immediately
+    exit(0); 
+  }
+}
+
 void Battle(Player& player, Enemy& enemy) {
-  cout << "\nA " << enemy.getName() << " has shown up!" << endl;
-  cout << "--- Battle Start! ---" << endl;
+  cout << "\n--- Battle Start! ---" << endl;
 
   while (enemy.isAlive()) {
+    cout << endl;
     player.displayStatus();
     cout << "--------------------------" << endl;
     enemy.displayStatus();
+    cout << "--------------------------";
 
     // Action available based on level
     int currentLevel = player.getLevel();
@@ -48,7 +61,7 @@ void Battle(Player& player, Enemy& enemy) {
 
     if (choice == 1) {
       int damage = player.getAttackPower();
-      cout << "You attacked " << enemy.getName() << " for " << damage << " damage!" << endl;
+      cout << "\nYou attacked " << enemy.getName() << " for " << damage << " damage!" << endl;
       enemy.takeDamage(damage);
 
     } else if (choice == 2) {
@@ -72,7 +85,10 @@ void Battle(Player& player, Enemy& enemy) {
       return;
     }
 
-    cout << "\n" << enemy.getName() << " attack you!" << endl;
+
+    cout << "\n" << enemy.getName() << " attacked you!" << endl;
     player.takeDamage(enemy.getAttackPower());
+
+    checkGameOver(player);
   }
 }
