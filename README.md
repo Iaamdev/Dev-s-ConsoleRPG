@@ -24,7 +24,8 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 
 ### 0.3 (Next Update)
 
-- Started Scenario Building
+- Started Scenario Building (Finished)
+- Add ASCII art for Enemies
 - Item finds
 
 ## How To Build
