@@ -72,14 +72,14 @@ int main() {
       // Scenario Test
       explore(*hero);
 
-      std::cout << "\nScenario complete!" << std::endl;
+      std::cout << "\n--- BATTLE WON!---\n" << std::endl;
       std::cout << "Do you want to continue your adventure? (y/n): ";
       char userChoice;
       std::cin >> userChoice;
         
       if (userChoice == 'n' || userChoice == 'N') {
         gameRunning = false;
-        std::cout << "You retire from adventuring. Thanks for playing!" << std::endl;
+        std::cout << "You retire from adventuring..." << std::endl;
       } else {
         std::cout << "\nYou rest briefly by a campfire..." << std::endl;
         hero->heal(30);

@@ -11,7 +11,7 @@
 using namespace std;
 
 void wait() {
-    // std::this_thread::sleep_for(std::chrono::seconds(1));
+  std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 void explore(Player& hero) {
@@ -139,7 +139,7 @@ void runScenario(Player& hero, int scenarioID) {
       break;
     }
     case 10: {
-      cout << "THE FINAL BATTLE." << endl;
+      // cout << "THE FINAL BATTLE." << endl;
       cout << "You stand before the ancient evil that plagues the land." << endl;
       cout << "The Dragon roars, shaking the very foundations of the earth!" << endl;
       wait();

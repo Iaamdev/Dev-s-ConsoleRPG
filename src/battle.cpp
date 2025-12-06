@@ -3,8 +3,13 @@
 #include <iostream>
 #include <limits>
 #include <cstdlib>
+#include <thread>
 
 using namespace std;
+
+void pace() {
+  std::this_thread::sleep_for(std::chrono::seconds(1));
+}
 
 void checkGameOver(const Player& hero) {
   if (hero.isDead()) {
@@ -64,6 +69,7 @@ void Battle(Player& player, Enemy& enemy) {
       int damage = player.getAttackPower();
       cout << "*******************" << endl;
       cout << "\n > You attacked " << enemy.getName() << " for " << damage << " damage!" << endl;
+      pace();
       enemy.takeDamage(damage);
 
     } else if (choice == 2) {
@@ -80,6 +86,8 @@ void Battle(Player& player, Enemy& enemy) {
 
     }
 
+    pace();
+
     if (!enemy.isAlive()) {
       cout << endl;
       cout << "You defeated " << enemy.getName() << "!" << endl;
@@ -89,6 +97,7 @@ void Battle(Player& player, Enemy& enemy) {
     }
 
     cout << "\n > " << enemy.getName() << " attacked you!" << endl;
+    pace();
     player.takeDamage(enemy.getAttackPower());
 
     checkGameOver(player);
