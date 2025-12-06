@@ -4,24 +4,15 @@
 #include "../include/ascii.h" // ASCII Art
 #include "../include/Enemy.h"
 #include "../include/Battle.h"
+#include "../include/scenarios.h"
 
 #include <iostream>
 #include <memory>
 #include <cstdlib>
 #include <limits>
+#include <ctime>
+#include <cstdlib>
 
-
-// Battale Function & Combat Logic
-// void Battle(Player& player, Enemy& enemy) {
-//   cout << "\nA " << enemy.getName() << " has shown up!" << endl;
-//   cout << "--- Battle Start! ---" << endl;
-//
-//   while (enemy.isAlive()) {
-//     cout << player.displayStatus() << endl;
-//     cout << "--------------------------" << endl;
-//     cout << enemy.displayStatus() << endl;
-//   }
-// }
 
 std::unique_ptr<Player> createPlayer(const std::string& name) {
 
@@ -74,18 +65,29 @@ int main() {
   if (hero) {
     std::cout << "\nYour character has been created successfully!\n" << std::endl;
     hero->displayStatus();
-    
-    // Scenario Test
-    Enemy goblin("Goblin", 50, 10, 50);
-    Battle(*hero, goblin);
 
-    // Level up Test
-    hero->gainExp(300);
-    std::cout << std::endl;
-    std::cout << playerName << " has reached level " << hero->getLevel() << "!" << std::endl; 
+    bool gameRunning = true;
+    
+    while (gameRunning) {
+      // Scenario Test
+      explore(*hero);
+
+      std::cout << "\nScenario complete!" << std::endl;
+      std::cout << "Do you want to continue your adventure? (y/n): ";
+      char userChoice;
+      std::cin >> userChoice;
+        
+      if (userChoice == 'n' || userChoice == 'N') {
+        gameRunning = false;
+        std::cout << "You retire from adventuring. Thanks for playing!" << std::endl;
+      } else {
+        std::cout << "\nYou rest briefly by a campfire..." << std::endl;
+        hero->heal(30);
+      }
+    }
   } else {
     std::cout << "Error: Failed to create character...";
   }
-
+  
   return 0;
 }

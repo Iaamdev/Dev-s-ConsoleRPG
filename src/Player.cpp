@@ -28,8 +28,11 @@ void Player::takeDamage(int damage) {
   if (currentHealth < 0) {
     currentHealth = 0;
   } else {
-    cout << playerName << " has taken " << damage << " damage!" << endl;
+    cout << " > " << playerName << " has taken " << damage << " damage!" << endl;
+    cout << "\n-------------------------" << endl;
+    cout << playerName << endl;
     cout << "HP: " << currentHealth << " / " << maxHealth << endl;
+    cout << "-------------------------" << endl;
   }
 }
 
@@ -42,7 +45,7 @@ void Player::displayStatus() const {
 
 void Player::gainExp(int exp) {
   experience += exp;
-  cout << playerName << " has gained " << exp << " experience points!" << endl;
+  cout << playerName << " has gained " << exp << " experience points!\n" << endl;
   while (experience >= expToNextLevel) {
     levelUp();
   }
@@ -56,6 +59,17 @@ void Player::levelUp() {
   currentHealth = maxHealth;
   attackPower += 2;
   cout << "***Level Up!!***"<< endl;
+}
+
+void Player::heal(int amount) {
+  int oldHealth = currentHealth;
+  currentHealth += amount;
+    
+  if (currentHealth > maxHealth) {
+    currentHealth = maxHealth;
+  }
+    
+  std::cout << playerName << " recovers " << (currentHealth - oldHealth) << " HP. (Health: " << currentHealth << "/" << maxHealth << ")" << std::endl;
 }
 
 void Player::showInventory() const {

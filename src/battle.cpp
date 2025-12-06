@@ -19,19 +19,20 @@ void checkGameOver(const Player& hero) {
 
 void Battle(Player& player, Enemy& enemy) {
   cout << "\n--- Battle Start! ---" << endl;
+  cout << endl;
+  player.displayStatus();
+  cout << "--------------------------" << endl;
+  enemy.displayStatus();
+  cout << "--------------------------" << endl;
 
   while (enemy.isAlive()) {
-    cout << endl;
-    player.displayStatus();
-    cout << "--------------------------" << endl;
-    enemy.displayStatus();
-    cout << "--------------------------";
 
     // Action available based on level
     int currentLevel = player.getLevel();
     int maxChoice = 2;
 
-    cout << "\nWhat will you do?:" << endl;
+    cout << "\n*******************" << endl;
+    cout << "What will you do?:" << endl;
     cout << "1. Attack" << endl;
     cout << "2. " << player.getSpecialUtilityName() << endl;
 
@@ -50,7 +51,7 @@ void Battle(Player& player, Enemy& enemy) {
       maxChoice = 5;
     }
 
-    cout << "> ";
+    cout << "-> ";
 
     int choice;
     while (!(cin >> choice) || choice < 1 || choice > maxChoice){
@@ -61,7 +62,8 @@ void Battle(Player& player, Enemy& enemy) {
 
     if (choice == 1) {
       int damage = player.getAttackPower();
-      cout << "\nYou attacked " << enemy.getName() << " for " << damage << " damage!" << endl;
+      cout << "*******************" << endl;
+      cout << "\n > You attacked " << enemy.getName() << " for " << damage << " damage!" << endl;
       enemy.takeDamage(damage);
 
     } else if (choice == 2) {
@@ -79,14 +81,14 @@ void Battle(Player& player, Enemy& enemy) {
     }
 
     if (!enemy.isAlive()) {
-      cout << "\n******************" << endl;
+      cout << endl;
       cout << "You defeated " << enemy.getName() << "!" << endl;
       player.gainExp(enemy.getExpReward());
+      player.displayStatus();
       return;
     }
 
-
-    cout << "\n" << enemy.getName() << " attacked you!" << endl;
+    cout << "\n > " << enemy.getName() << " attacked you!" << endl;
     player.takeDamage(enemy.getAttackPower());
 
     checkGameOver(player);

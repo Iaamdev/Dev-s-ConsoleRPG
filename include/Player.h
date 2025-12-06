@@ -47,6 +47,7 @@ class Player : public Character {
     // Player-specific methods
     void gainExp(int exp);
     void levelUp();
+    void heal(int amount);
     bool isDead() const { return currentHealth <= 0; }
 
     // Inventory access
