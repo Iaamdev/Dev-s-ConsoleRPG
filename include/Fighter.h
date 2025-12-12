@@ -10,7 +10,7 @@ class Fighter : public Player {
     int strengthBonus;
 
   public:
-    Fighter(std::string name, int health, int attackPower, double startingDefenseBonus = 0.15, 
+    Fighter(std::string name, int health, int attackPower, int startingDefenseBonus = 5, 
       int startingStrengthBonus = 10) : 
       Player(name, health, attackPower), defenseBonus(startingDefenseBonus), strengthBonus(startingStrengthBonus) {}
     
@@ -24,14 +24,14 @@ class Fighter : public Player {
   }
 
   void specialAttack(Enemy& target) override {
-    std::cout << playerName << " charges with a SHIELD BASH!" << std::endl;
+    std::cout << "\n > "<< playerName << " charges with a SHIELD BASH!" << std::endl;
     // Uses the strength bonus included in getAttackPower() * 1.5
     int damage = getAttackPower() * 1.5; 
     target.takeDamage(damage);
   }
 
   void ultimateAbility(Enemy& target) override {
-    std::cout << playerName << " SMITE's their enemy!" << std::endl;
+    std::cout << "\n > " << playerName << " SMITE's their enemy!" << std::endl;
     int damage = getAttackPower() * 3; 
     std::cout << "SMITE deals " << damage << " damage!" << std::endl;
     target.takeDamage(damage);
@@ -43,7 +43,7 @@ class Fighter : public Player {
     if (currentHealth > maxHealth) {
       currentHealth = maxHealth; 
     }
-    std::cout << playerName << " uses SECOND WIND and recovers " << healAmount << " HP!" << std::endl;
+    std::cout << "\n > "<< playerName << " uses SECOND WIND and recovers " << healAmount << " HP!" << std::endl;
   }
 
   // Getters for class
