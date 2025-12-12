@@ -28,6 +28,7 @@ void Player::takeDamage(int damage) {
   if (currentHealth < 0) {
     currentHealth = 0;
   } else {
+    //TODO: Make a status for mana gauge and stamina for Fighter & Thief
     cout << " > " << playerName << " has taken " << damage << " damage!" << endl;
     cout << "\n-------------------------" << endl;
     cout << playerName << endl;
@@ -36,6 +37,7 @@ void Player::takeDamage(int damage) {
   }
 }
 
+//TODO: I want to create a visual gauge for my HP & MP/Stamina info
 void Player::displayStatus() const {
   cout << "--- " << playerName << " ---" << endl;
   cout << "Level: " << level << " | Exp to next: " << experience << " / " << expToNextLevel << endl;
@@ -59,6 +61,7 @@ void Player::levelUp() {
   currentHealth = maxHealth;
   attackPower += 2;
   cout << "***Level Up!!***"<< endl;
+  //TODO: Add notice milestones for level attacks
 }
 
 void Player::heal(int amount) {
