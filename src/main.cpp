@@ -69,9 +69,9 @@ int main() {
     bool gameRunning = true;
     
     while (gameRunning) {
-      // Scenario Test
       explore(*hero);
 
+      std::cout << std::endl;
       std::cout << "\n--- BATTLE WON!---\n" << std::endl;
       std::cout << "Do you want to continue your adventure? (y/n): ";
       char userChoice;

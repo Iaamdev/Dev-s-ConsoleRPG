@@ -62,6 +62,9 @@ void Player::levelUp() {
   attackPower += 2;
   cout << "***Level Up!!***"<< endl;
   //TODO: Add notice milestones for level attacks
+  if (level == 3 || level == 6 || level == 9) {
+    cout << "\nYou have unlocked a new skill!" << endl; 
+  }
 }
 
 void Player::heal(int amount) {

@@ -26,7 +26,7 @@ void Battle(Player& player, Enemy& enemy) {
   cout << "\n--- Battle Start! ---" << endl;
   cout << endl;
   player.displayStatus();
-  cout << "--------------------------" << endl;
+  cout << "\n--------------------------" << endl;
   enemy.displayStatus();
   cout << "--------------------------" << endl;
 
