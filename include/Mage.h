@@ -16,17 +16,16 @@ class Mage : public Player {
       Player(name, health, attackPower), mana(baseMana), maxMana(baseMana), spellPower(baseSpellPower) {}
 
     void specialUtility() override {
-      if (mana >= 10) {
-        mana -= 10;
-        std::cout << playerName << " used MANA SPARK!" << std::endl;
-      } else {
-        std::cout << "You don't have enough mana!" << std::endl;
-      }
+      mana += 10;
+      std::cout << playerName << " used MANA SPARK!" << std::endl;
+      if (mana > maxMana) {
+        mana = maxMana;
+      }  
     }
 
     void specialAttack(Enemy& target) override {
-      if (mana >= 5) {
-        mana -= 5;
+      if (mana >= 10) {
+        mana -= 10;
         std::cout << playerName << " casts VORTEX BLAST!" << std::endl;
         int damage = getAttackPower() + spellPower;
         target.takeDamage(damage);
@@ -65,7 +64,7 @@ class Mage : public Player {
       } 
     }
 
-    std::string getSpecialUtilityName() const override { return "FIREBALL"; }
+    std::string getSpecialUtilityName() const override { return "MANA SPARK"; }
     std::string getSpecialAttackName() const override { return "VORTEX BLAST"; }
     std::string getUltimateName() const override { return "METEORA"; }
     std::string getHealName() const override { return "CURAGA"; }
@@ -76,6 +75,16 @@ class Mage : public Player {
       std::cout << "*** Class: Mage ***" << std::endl;
       std::cout << "Mana: " << mana << "/" << maxMana << std::endl;
       std::cout << "Spell Power: " << spellPower << std::endl;
+      std::cout << "Mana: " << mana << "/" << maxMana << "\n> |";
+      int bars = (mana * 10) / maxMana; 
+      for (int i = 0; i < 10; ++i) {
+        if (i < bars) { 
+          std::cout << "█";
+        } else { 
+          std::cout << " ";
+        }
+      }
+      std::cout << "|" << std::endl;
     }
 };
 
