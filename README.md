@@ -1,6 +1,6 @@
 # Dev-s-ConsoleRPG
 
-A little text-based RPG that I made for a little project! I hope you enjoy it!!
+A little text-based RPG that I made for a little project! I hope you enjoy it or even take inspiration from it!!
 
 ## Features
 
@@ -24,9 +24,20 @@ A little text-based RPG that I made for a little project! I hope you enjoy it!!
 
 ### 0.3 (Next Update)
 
-- Started Scenario Building (Finished)
+- Started Scenario Building
 - Add ASCII art for Enemies
+
+### 1.0 (Final Update (Post-Semester))
+
 - Item finds
+- More Scenarios for better scaling
+
+### Note to professor:
+
+Thanks for the semester, boss! I learned a good deal from the Class! I will have to do some independent learning to dive
+more deeper into C++ but your class was extremely helpful! I also appreciate you introducing us to some data structures & algo
+stuff (it will help for next semester xD)! Anywhos, I hope that you enjoy my rject and are at least slightly engaged with what
+I made!
 
 ## How To Build
 
